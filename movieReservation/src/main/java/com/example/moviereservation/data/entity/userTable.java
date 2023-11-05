@@ -15,5 +15,14 @@ import javax.persistence.*;
 public class userTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long userId; // 회원 ID
+
+    @Column(nullable = false)
+    private String password; // 회원 계정 비밀번호
+
+    @Column(nullable = false)
+    private String nickname; // 회원 계정 닉네임
+
+    @Column(nullable = false)
+    private String Pnum; // 회원 전화번호
 }

@@ -15,5 +15,11 @@ import javax.persistence.*;
 public class reservationTable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer number;
+    private Integer reservationNumber; // 예매 번호
+
+    @Column(nullable = false)
+    private Integer movieInfoID; // movieTimetable moveInfoID참조
+
+    @Column(nullable = false)
+    private Integer seatNumber; // theaterTable의 seatNumber 참조
 }
