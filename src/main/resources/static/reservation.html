@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>영화 예매</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        select, button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .seating {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .seat {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: #333;
+            color: #fff;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>영화 예매</h2>
+    <label for="movie">영화 선택:</label>
+    <select id="movie">
+        <option value="movie1">영화 1</option>
+        <option value="movie2">영화 2</option>
+        <!-- 다른 영화 옵션들 -->
+    </select>
+    <label for="date">날짜 선택:</label>
+    <select id="date">
+        <option value="date1">날짜 1</option>
+        <option value="date2">날짜 2</option>
+        <!-- 다른 날짜 옵션들 -->
+    </select>
+    <label for="theater">극장 선택:</label>
+    <select id="theater">
+        <option value="theater1">극장 1</option>
+        <option value="theater2">극장 2</option>
+        <!-- 다른 극장 옵션들 -->
+    </select>
+    <label for="time">시간 선택:</label>
+    <select id="time">
+        <option value="time1">시간 1</option>
+        <option value="time2">시간 2</option>
+        <!-- 다른 시간 옵션들 -->
+    </select>
+    <button id="bookSeats">좌석 예매</button>
+    <div class="seating">
+        <!-- 좌석 선택 영역 -->
+        <div class="seat">A1</div>
+        <div class="seat">A2</div>
+        <div class="seat">A3</div>
+        <div class="seat selected">A4</div>
+        <!-- 다른 좌석들 -->
+    </div>
+</div>
+
+<script>
+    const seats = document.querySelectorAll('.seat');
+    seats.forEach(seat => {
+        seat.addEventListener('click', () => {
+            seat.classList.toggle('selected');
+        });
+    });
+
+    const bookSeatsButton = document.getElementById('bookSeats');
+    bookSeatsButton.addEventListener('click', () => {
+        const selectedSeats = Array.from(seats)
+            .filter(seat => seat.classList.contains('selected'))
+            .map(seat => seat.textContent);
+        alert(`선택한 좌석: ${selectedSeats.join(', ')}`);
+    });
+</script>
+</body>
+</html>

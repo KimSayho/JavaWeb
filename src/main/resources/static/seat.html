@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>좌석 예매</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .seating-plan {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        .seat {
+            width: 50px;
+            height: 50px;
+            background-color: #ccc;
+            border: 1px solid #888;
+            cursor: pointer;
+        }
+
+        .selected {
+            background-color: #333;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>좌석 예매</h2>
+    <div class="seating-plan">
+        <!-- 좌석 표시 -->
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+        <div class="seat"></div>
+    </div>
+    <button id="bookButton">선택한 좌석 예매</button>
+</div>
+
+<script>
+    const seats = document.querySelectorAll('.seat');
+    const bookButton = document.getElementById('bookButton');
+
+    seats.forEach(seat => {
+        seat.addEventListener('click', () => {
+            seat.classList.toggle('selected');
+        });
+    });
+
+    bookButton.addEventListener('click', () => {
+        const selectedSeats = document.querySelectorAll('.selected');
+        if (selectedSeats.length === 0) {
+            alert('선택한 좌석이 없습니다.');
+        } else {
+            const selectedSeatNumbers = Array.from(selectedSeats).map(seat => seat.innerText);
+            alert(`선택한 좌석: ${selectedSeatNumbers.join(', ')}을 예매합니다.`);
+            // 여기에서 실제로 예매 처리 로직을 수행해야 합니다.
+        }
+    });
+</script>
+</body>
+</html>
